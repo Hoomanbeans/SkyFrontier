@@ -72,3 +72,25 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+Content/PlaneTest/BiPlane/Biplane.uasset
+Content/PlaneTest/BiPlane/Biplane_rigged.uasset
+Content/PlaneTest/BiPlane/Biplane_rigged_PhysicsAsset.uasset
+Content/PlaneTest/BiPlane/Biplane_rigged_Skeleton.uasset
+Content/PlaneTest/BiPlane/BiplaneWing.uasset
+Content/PlaneTest/BiPlane/Fbx_Default_Material_1.uasset
+Content/PlaneTest/BiPlane/M_UE4Man_Body1.uasset
+Content/PlaneTest/BiPlane/MannequinPosed_mesh.uasset
+Content/PlaneTest/BiPlane/MannequinPosed_mesh_PhysicsAsset.uasset
+Content/PlaneTest/BiPlane/MannequinPosed_mesh_Skeleton.uasset
+Content/PlaneTest/ThirdPersonFlying.uasset
+Content/PlaneTest/BiPlane/Biplane.uasset
+Content/PlaneTest/BiPlane/Biplane_rigged.uasset
+Content/PlaneTest/BiPlane/Biplane_rigged_PhysicsAsset.uasset
+Content/PlaneTest/BiPlane/Biplane_rigged_Skeleton.uasset
+Content/PlaneTest/BiPlane/BiplaneWing.uasset
+Content/PlaneTest/BiPlane/Fbx_Default_Material_1.uasset
+Content/PlaneTest/BiPlane/M_UE4Man_Body1.uasset
+Content/PlaneTest/BiPlane/MannequinPosed_mesh.uasset
+Content/PlaneTest/BiPlane/MannequinPosed_mesh_PhysicsAsset.uasset
+Content/PlaneTest/BiPlane/MannequinPosed_mesh_Skeleton.uasset
+Content/PlaneTest/ThirdPersonFlying.uasset
