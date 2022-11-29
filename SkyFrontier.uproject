@@ -7,18 +7,16 @@
 		{
 			"Name": "SkyFrontier",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
 		{
 			"Name": "RawInput",
 			"Enabled": true
-		},
-		{
-			"Name": "UniversalCameraPlugin",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/a9172fdfc87c464eae3a49860ee2610f"
 		}
 	]
 }
