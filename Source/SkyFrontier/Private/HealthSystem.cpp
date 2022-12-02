@@ -52,7 +52,7 @@ void UHealthSystem::TakeDamage(const float Amount)
 		OnDamageTakenEvent.Broadcast(Amount);
 	}
 }
-
+ 
 void UHealthSystem::RecoverHealth(const float Amount)
 {
 	if(Amount > 0)
