@@ -5,7 +5,6 @@
 
 UHealthSystem::UHealthSystem()
 {
-	// This is a component that doesn't need a tick so lets disable it
 	PrimaryComponentTick.bCanEverTick = false;
 	PrimaryComponentTick.bStartWithTickEnabled = false;
 }
@@ -13,8 +12,7 @@ UHealthSystem::UHealthSystem()
 void UHealthSystem::BeginPlay()
 {
 	Super::BeginPlay();
-
-	MaxHealth = 100;
+	
 	Health = MaxHealth;
 	Shield = 0;
 }
