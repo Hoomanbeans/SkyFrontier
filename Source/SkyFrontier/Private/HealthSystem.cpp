@@ -14,8 +14,9 @@ void UHealthSystem::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// This is here for now, but if you ever do anything serialization related you might not want this.
+	MaxHealth = 100;
 	Health = MaxHealth;
+	Shield = 0;
 }
 
 float UHealthSystem::GetHealth() const
@@ -31,6 +32,11 @@ float UHealthSystem::GetMaxHealth() const
 float UHealthSystem::GetHealthAsPercentage() const
 {
 	return Health / MaxHealth;
+}
+
+float UHealthSystem::GetShield() const
+{
+	return Shield;
 }
 
 void UHealthSystem::ModifyHealth(const float Amount)
@@ -58,7 +64,35 @@ void UHealthSystem::RecoverHealth(const float Amount)
 	if(Amount > 0)
 	{
 		Health += Amount;
-
+		if (Health >= MaxHealth)
+		{
+			Health = MaxHealth;
+		}
+		
 		OnDamageHealedEvent.Broadcast(Amount);
+	}
+}
+
+void UHealthSystem::ReceiveShield(const float Amount)
+{
+	if(Amount >= 0)
+	{
+		Shield += Amount;
+	
+		OnShieldReceiveEvent.Broadcast(Amount);
+	}
+}
+
+void UHealthSystem::RemoveShield(const float Amount)
+{
+	if(Amount >= 0)
+	{
+		Shield -= Amount;
+		
+		if (Shield < 0)
+		{
+			Shield = 0;
+		}
+		OnShieldReceiveEvent.Broadcast(Amount);
 	}
 }
