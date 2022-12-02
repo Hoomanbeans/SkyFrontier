@@ -37,6 +37,8 @@ public:
 	void RecoverHealth(float Amount);
 	UFUNCTION(BlueprintCallable)
 	void ReceiveShield(float Amount);
+	UFUNCTION(BlueprintCallable)
+	void RemoveShield(float Amount);
 
 protected: // Functions
 
@@ -56,5 +58,5 @@ private: // This can be protected if we want to subclass the Health Component
 	float MaxHealth;
 	UPROPERTY(VisibleAnywhere)
 	float Shield;
-		
+
 };
