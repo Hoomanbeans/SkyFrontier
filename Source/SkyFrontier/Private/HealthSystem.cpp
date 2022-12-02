@@ -15,7 +15,6 @@ void UHealthSystem::BeginPlay()
 	Super::BeginPlay();
 	// This is here for now, but if you ever do anything serialization related you might not want this.
 	Health = MaxHealth;
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::SanitizeFloat(Health));
 }
 
 float UHealthSystem::GetHealth() const
