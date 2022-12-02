@@ -8,6 +8,7 @@
 
 DECLARE_EVENT_OneParam(UCPP_HealthComponent, DamageTakenEvent, float )
 DECLARE_EVENT_OneParam(UCPP_HealthComponent, HealDamageEvent, float )
+DECLARE_EVENT_OneParam(UCPP_HealthComponent, ShieldReceiveEvent, float )
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SKYFRONTIER_API UHealthSystem : public UActorComponent
@@ -24,6 +25,8 @@ public:
 	float GetMaxHealth() const;
 	UFUNCTION(BlueprintPure)
 	float GetHealthAsPercentage() const;
+	UFUNCTION(BlueprintPure)
+	float GetShield() const;
 
 	UFUNCTION(BlueprintCallable)
 	void ModifyHealth(float Amount);
@@ -32,6 +35,8 @@ public:
 	void TakeDamage(float Amount);
 	UFUNCTION(BlueprintCallable)
 	void RecoverHealth(float Amount);
+	UFUNCTION(BlueprintCallable)
+	void ReceiveShield(float Amount);
 
 protected: // Functions
 
@@ -41,6 +46,7 @@ public: // Events
 
 	DamageTakenEvent OnDamageTakenEvent;
 	HealDamageEvent OnDamageHealedEvent;
+	ShieldReceiveEvent OnShieldReceiveEvent;
 
 private: // This can be protected if we want to subclass the Health Component
 
@@ -48,5 +54,7 @@ private: // This can be protected if we want to subclass the Health Component
 	float Health;
 	UPROPERTY(EditAnywhere)
 	float MaxHealth;
+	UPROPERTY(VisibleAnywhere)
+	float Shield;
 		
 };
