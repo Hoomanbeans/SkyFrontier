@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS()	
 class SKYFRONTIER_API ASkyFrontierGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
