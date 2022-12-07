@@ -97,8 +97,7 @@ bool TCPClient::Init()
 		int32 size = FCString::Strlen(serializedChar);
 		int32 sent = 0;
 		bool successful = Socket->Send((uint8*)  TCHAR_TO_UTF8(serializedChar), size, sent);
-		if (successful)
-			UE_LOG(LogTemp, Log, TEXT("MESSAGE SENT!!!!"));
+		if (successful)  UE_LOG(LogTemp, Log, TEXT("MESSAGE SENT!!!!"));
 	}
 	void TCPClient::JoinGameSession(int sID)
 	{
@@ -107,6 +106,5 @@ bool TCPClient::Init()
 		int32 size = FCString::Strlen(serializedChar);
 		int32 sent = 0;
 		bool successful = Socket->Send((uint8*)  TCHAR_TO_UTF8(serializedChar), size, sent);
-		if (successful)
-			UE_LOG(LogTemp, Log, TEXT("MESSAGE SENT!!!!"));
+		if (successful)  UE_LOG(LogTemp, Log, TEXT("MESSAGE SENT!!!!"));
 	}

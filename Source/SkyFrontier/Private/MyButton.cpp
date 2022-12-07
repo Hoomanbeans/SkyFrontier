@@ -5,7 +5,7 @@
 
 UMyButton::UMyButton()
 {
-	OnClicked.AddDynamic(this, &UMyButton::OnClick);
+OnClicked.AddDynamic(this, &UMyButton::OnClick);
 }
 void UMyButton::SetSessionInfo(int sID, TCPClient *tclient)
 {
