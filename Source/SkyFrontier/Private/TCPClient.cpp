@@ -46,7 +46,7 @@ bool TCPClient::Init()
 		int32 sent = 0;
 		bool successful = Socket->Send((uint8*)TCHAR_TO_UTF8(serializedChar), size, sent);
 		if (successful)
-			{UE_LOG(LogTemp, Log, TEXT("MESSAGE SENT!"));
+			{UE_LOG(LogTemp, Log, TEXT("MESSAGE SENT THROUGH SOCKET"));
 			return true;
 		}
 		else
