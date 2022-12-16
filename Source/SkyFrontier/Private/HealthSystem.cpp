@@ -15,6 +15,13 @@ void UHealthSystem::BeginPlay()
 	Shield = 0;
 }
 
+void UHealthSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(UHealthSystem, Health);
+}
+
 float UHealthSystem::GetHealth() const
 {
 	return Health;
@@ -39,6 +46,8 @@ void UHealthSystem::TakeDamage(const float Amount)
 		OnDamageTakenEvent.Broadcast(Amount);
 	}
 }
+
+
 
 void UHealthSystem::RecoverHealth(const float Amount)
 {

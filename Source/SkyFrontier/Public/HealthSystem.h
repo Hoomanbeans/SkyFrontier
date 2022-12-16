@@ -25,6 +25,7 @@ public:
 	UFUNCTION(BlueprintPure)
 		float GetShield() const;
 
+
 	UFUNCTION(BlueprintCallable)
 		void TakeDamage(float Amount);
 	UFUNCTION(BlueprintCallable)
@@ -38,6 +39,8 @@ protected: // Functions
 
 	virtual void BeginPlay() override;
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 public: // Events
 
 	DamageTakenEvent OnDamageTakenEvent;
@@ -46,7 +49,7 @@ public: // Events
 
 private: // This can be protected if we want to subclass the Health Component
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(Replicated, VisibleAnywhere)
 		float Health;
 	UPROPERTY(EditAnywhere)
 		float MaxHealth;
