@@ -18,13 +18,11 @@ void AScoreAttackGameMode::PostInitializeComponents()
 	
 	if (FoundActors.Num() == 2)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("IS THIS WORKING"));
 		Pawn1 = Cast<APawn>(FoundActors[0]);
 		Pawn2 = Cast<APawn>(FoundActors[1]);
 
 		if (Pawn1 && Pawn2)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("IS THIS WORKING"));
 			PointsComponent1 = Pawn1->FindComponentByClass<UPointsComponent>();
 			PointsComponent2 = Pawn2->FindComponentByClass<UPointsComponent>();
 		}
