@@ -11,17 +11,17 @@ void UMatchmakingSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 	Super::Initialize(Collection);
 }
 
-void UMatchmakingSubsystem::RequestGame()
+void UMatchmakingSubsystem::RequestGame(FString LevelName)
 {
-	FindMatchJob = new MatchmakingJob(CurrentState);
+	FindMatchJob = new MatchmakingJob(CurrentState, LevelName);
 	FindMatchJob->JobCompletedEvent.AddUFunction(this, "OnMatchmakerThreadDone");
 		
 	FRunnableThread::Create(FindMatchJob, TEXT("FindMatchJob"));
 }
 
-void UMatchmakingSubsystem::OnMatchmakerThreadDone(bool CompletionState, FString ServerIP)
+void UMatchmakingSubsystem::OnMatchmakerThreadDone(bool CompletionState, FString ServerIP, FString LevelName)
 {
 	if(CompletionState)
-		MatchFoundEvent.Broadcast(ServerIP);
+		MatchFoundEvent.Broadcast(ServerIP, LevelName);
 	else ServerToConnectTo = "Failed To Connect!";
 }
