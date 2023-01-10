@@ -1,11 +1,9 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 
 // Bool if it did it's job correctly and the ip:port to connect to.
-DECLARE_MULTICAST_DELEGATE_ThreeParams(FOnMatchMakerThreadCompleted, bool, FString, FString);
+DECLARE_MULTICAST_DELEGATE_TwoParams(FOnMatchMakerThreadCompleted, bool, FString);
 
 // Declaration Of All The Messages The Clients Are Allowed To Send AKA The Message ID's
 #define CLIENT_MESSAGE_REQUESTCONNECTION 1
@@ -17,7 +15,7 @@ public:
 	// Dissalow default construction of this objects
 	// Simple example, but you could control the copy/move contructors and copy/move operators too!
 	MatchmakingJob();
-	explicit MatchmakingJob(FString& stateToWriteInto, FString LevelName);
+	explicit MatchmakingJob(FString& stateToWriteInto);
 
 private:
 	// Do your setup here, allocate memory, ect.
@@ -37,9 +35,6 @@ private:
 	// Reference To Strings That Exist In The Matchmaking System, Thread Writes Directly Into Them!
 	FString& currentState;
 
-	// Level To Load
-	FString LevelToLoad;
-	
 	// Pointer To Our Current Socket Object
 	FSocket* ConnectionSocket;
 

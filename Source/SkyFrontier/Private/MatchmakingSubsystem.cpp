@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "MatchmakingSubsystem.h"
 
 
@@ -11,17 +8,17 @@ void UMatchmakingSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 	Super::Initialize(Collection);
 }
 
-void UMatchmakingSubsystem::RequestGame(FString LevelName)
+void UMatchmakingSubsystem::RequestGame()
 {
-	FindMatchJob = new MatchmakingJob(CurrentState, LevelName);
+	FindMatchJob = new MatchmakingJob(CurrentState);
 	FindMatchJob->JobCompletedEvent.AddUFunction(this, "OnMatchmakerThreadDone");
 		
 	FRunnableThread::Create(FindMatchJob, TEXT("FindMatchJob"));
 }
 
-void UMatchmakingSubsystem::OnMatchmakerThreadDone(bool CompletionState, FString ServerIP, FString LevelName)
+void UMatchmakingSubsystem::OnMatchmakerThreadDone(bool CompletionState, FString ServerIP)
 {
 	if(CompletionState)
-		MatchFoundEvent.Broadcast(ServerIP, LevelName);
+		MatchFoundEvent.Broadcast(ServerIP);
 	else ServerToConnectTo = "Failed To Connect!";
 }

@@ -1,15 +1,11 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "MatchmakingJob.h"
 #include "Sockets.h"
 #include "Interfaces/IPv4/IPv4Endpoint.h"
 
 #pragma optimize("", off)
 
-MatchmakingJob::MatchmakingJob(FString& stateToWriteInto, FString LevelName)
+MatchmakingJob::MatchmakingJob(FString& stateToWriteInto)
 	: currentState(stateToWriteInto)
-	, LevelToLoad(LevelName)
 {}
 
 bool MatchmakingJob::Init()
@@ -46,7 +42,7 @@ uint32 MatchmakingJob::Run()
     if(!ConnectionSocket->Send(reinterpret_cast<uint8*>(TCHAR_TO_UTF8(serializedChar)), Size, Sent))
     {
         // Some Error Message
-    	JobCompletedEvent.Broadcast(false, "", "");
+    	JobCompletedEvent.Broadcast(false, "");
     	return 1; // Returns an exit code, you can use this to figure out where something failed or the type of failure
     }
 
@@ -68,7 +64,7 @@ uint32 MatchmakingJob::Run()
     if(!ConnectionSocket->Recv(ReceiveBuffer, 128, BytesRead))
     {
 	    // Some Error Use something like FScoket::GetLastError (I dont remember the exact syntax) ESocketError Return Type
-    	JobCompletedEvent.Broadcast(false, "", "");
+    	JobCompletedEvent.Broadcast(false, "");
     	return 2;
     }
 	// Reinterpret the bits back into a const char* and apply it to the FString
@@ -90,12 +86,12 @@ uint32 MatchmakingJob::Run()
     if(!ConnectionSocket->Send(reinterpret_cast<uint8*>(TCHAR_TO_UTF8(serializedChar)), Size, Sent))
     {
         // Some Error Message
-    	JobCompletedEvent.Broadcast(false, "", "");
+    	JobCompletedEvent.Broadcast(false, "");
     	return 3;
     }
 #pragma endregion
 	
-	JobCompletedEvent.Broadcast(true, "Server IP", LevelToLoad);
+	JobCompletedEvent.Broadcast(true, FullMessage);
 
 	return 0; // return the error! None in this case! :D
 }
