@@ -10,24 +10,38 @@ UPointsComponent::UPointsComponent()
 void UPointsComponent::BeginPlay()
 {
 	Super::BeginPlay();
-	Points = 0;
+	P1Points = 0;
+	P2Points = 0;
 }
 
 void UPointsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(UPointsComponent, Points);
+	DOREPLIFETIME(UPointsComponent, P1Points);
+	DOREPLIFETIME(UPointsComponent, P2Points);
 }
 
-int UPointsComponent::GetPoints() const
+int UPointsComponent::GetP1Points() const
 {
-	return Points;
+	return P1Points;
 }
 
-void UPointsComponent::AddPoints_Implementation(const int PointsToAdd)
+int UPointsComponent::GetP2Points() const
 {
-	Points += PointsToAdd;
+	return P2Points;
+}
+
+void UPointsComponent::AddP1Points_Implementation(const int PointsToAdd)
+{
+	P1Points += PointsToAdd;
+
+	OnPointsReceiveEvent.Broadcast(PointsToAdd);
+}
+
+void UPointsComponent::AddP2Points_Implementation(const int PointsToAdd)
+{
+	P2Points += PointsToAdd;
 
 	OnPointsReceiveEvent.Broadcast(PointsToAdd);
 }

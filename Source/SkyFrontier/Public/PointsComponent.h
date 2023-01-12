@@ -16,10 +16,14 @@ public:
 	UPointsComponent();
 
 	UFUNCTION(BlueprintCallable, Category = "Points")
-	int GetPoints() const;
+	int GetP1Points() const;
+	UFUNCTION(BlueprintCallable, Category = "Points")
+int GetP2Points() const;
 	
 	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Points")
-		void AddPoints(int PointsToAdd);
+		void AddP1Points(int PointsToAdd);
+	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Points")
+	void AddP2Points(int PointsToAdd);
 
 protected: // Functions
 
@@ -35,5 +39,7 @@ public: // Events
 public:
 
 	UPROPERTY(Replicated, VisibleAnywhere, Category = "Points")
-	int Points;
+	int P1Points;
+	UPROPERTY(Replicated, VisibleAnywhere, Category = "Points")
+	int P2Points;
 };
