@@ -17,14 +17,12 @@ class SKYFRONTIER_API UHealthSystem : public UActorComponent
 public:
 	// Sets default values for this component's properties
 	UHealthSystem();
-
 	UFUNCTION(BlueprintPure)
 		float GetHealth() const;
 	UFUNCTION(BlueprintPure)
 		float GetMaxHealth() const;
 	UFUNCTION(BlueprintPure)
 		float GetShield() const;
-
 
 	UFUNCTION(BlueprintCallable)
 		void TakeDamage(float Amount);

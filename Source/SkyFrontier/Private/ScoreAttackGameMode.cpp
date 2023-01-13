@@ -42,12 +42,12 @@ void AScoreAttackGameMode::Tick(const float DeltaSeconds)
 
 	if (PointsComponent1 && PointsComponent2 && !bGameEnded)
 	{
-		if (PointsComponent1->P1Points >= GoalScore)
+		if (PointsComponent1->Points >= GoalScore)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Player 1 Wins!"));
 			bGameEnded = true;
 		}
-		else if (PointsComponent2->P2Points >= GoalScore)
+		else if (PointsComponent2->Points >= GoalScore)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Player 2 Wins!"));
 			bGameEnded = true;

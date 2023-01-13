@@ -1,11 +1,14 @@
 #include "HealthSystem.h"
 #include "Net/UnrealNetwork.h"
 #include "Engine/Engine.h"
+#include "Components/ActorComponent.h"
 
 UHealthSystem::UHealthSystem()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 	PrimaryComponentTick.bStartWithTickEnabled = false;
+	SetIsReplicated(true);
+	MaxHealth = 100;
 }
 
 void UHealthSystem::BeginPlay()
