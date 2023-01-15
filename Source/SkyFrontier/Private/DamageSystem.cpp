@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "DamageSystem.h"
 
 // Sets default values for this component's properties
@@ -8,16 +5,16 @@ UDamageSystem::UDamageSystem()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 	PrimaryComponentTick.bStartWithTickEnabled = false;
+	SetIsReplicated(true);
+	ShootingDamage = 20;
+	MissileDamage = 50;
 }
 
 
 // Called when the game starts
 void UDamageSystem::BeginPlay()
 {
-	Super::BeginPlay();
-	ShootingDamage = 20;
-	MissileDamage = 50;
-	
+	Super::BeginPlay();	
 }
 
 float UDamageSystem::GetShootingDamage() const

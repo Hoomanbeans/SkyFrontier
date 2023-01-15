@@ -1,49 +1,44 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Net/UnrealNetwork.h"
 #include "Components/ActorComponent.h"
 #include "HealthSystem.generated.h"
 
-DECLARE_EVENT_OneParam(UCPP_HealthComponent, DamageTakenEvent, float )
-DECLARE_EVENT_OneParam(UCPP_HealthComponent, HealDamageEvent, float )
-DECLARE_EVENT_OneParam(UCPP_HealthComponent, ShieldReceiveEvent, float )
+DECLARE_EVENT_OneParam(UCPP_HealthComponent, DamageTakenEvent, float)
+DECLARE_EVENT_OneParam(UCPP_HealthComponent, HealDamageEvent, float)
+DECLARE_EVENT_OneParam(UCPP_HealthComponent, ShieldReceiveEvent, float)
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class SKYFRONTIER_API UHealthSystem : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this component's properties
 	UHealthSystem();
-	
 	UFUNCTION(BlueprintPure)
-	float GetHealth() const;
+		float GetHealth() const;
 	UFUNCTION(BlueprintPure)
-	float GetMaxHealth() const;
+		float GetMaxHealth() const;
 	UFUNCTION(BlueprintPure)
-	float GetHealthAsPercentage() const;
-	UFUNCTION(BlueprintPure)
-	float GetShield() const;
+		float GetShield() const;
 
 	UFUNCTION(BlueprintCallable)
-	void ModifyHealth(float Amount);
-
+		void TakeDamage(float Amount);
 	UFUNCTION(BlueprintCallable)
-	void TakeDamage(float Amount);
+		void RecoverHealth(float Amount);
 	UFUNCTION(BlueprintCallable)
-	void RecoverHealth(float Amount);
+		void ReceiveShield(float Amount);
 	UFUNCTION(BlueprintCallable)
-	void ReceiveShield(float Amount);
-	UFUNCTION(BlueprintCallable)
-	void RemoveShield(float Amount);
+		void RemoveShield(float Amount);
 
 protected: // Functions
 
-	virtual void BeginPlay() override;	
-	
+	virtual void BeginPlay() override;
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 public: // Events
 
 	DamageTakenEvent OnDamageTakenEvent;
@@ -52,11 +47,10 @@ public: // Events
 
 private: // This can be protected if we want to subclass the Health Component
 
-	UPROPERTY(VisibleAnywhere)
-	float Health;
+	UPROPERTY(Replicated, VisibleAnywhere)
+		float Health;
 	UPROPERTY(EditAnywhere)
-	float MaxHealth;
+		float MaxHealth;
 	UPROPERTY(VisibleAnywhere)
-	float Shield;
-
+		float Shield;
 };
