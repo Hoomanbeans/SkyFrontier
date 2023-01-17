@@ -5,7 +5,7 @@ UPointsComponent::UPointsComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 	PrimaryComponentTick.bStartWithTickEnabled = false;
-	SetIsReplicated(true);
+	SetIsReplicatedByDefault(true);
 }
 
 void UPointsComponent::BeginPlay()

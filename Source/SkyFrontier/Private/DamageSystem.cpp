@@ -5,7 +5,7 @@ UDamageSystem::UDamageSystem()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 	PrimaryComponentTick.bStartWithTickEnabled = false;
-	SetIsReplicated(true);
+	SetIsReplicatedByDefault(true);
 	ShootingDamage = 20;
 	MissileDamage = 50;
 }
